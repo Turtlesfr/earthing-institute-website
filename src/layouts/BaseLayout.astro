@@ -1,8 +1,10 @@
 ---
 import '../styles/global.css';
+import CampaignBanner from '../components/layout/CampaignBanner.astro';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import FloatingDonateBar from '../components/layout/FloatingDonateBar.astro';
+import FundraisingModal from '../components/layout/FundraisingModal.astro';
 import { site } from '../data/config';
 
 interface Props {
@@ -49,11 +51,13 @@ const pageTitle = title === site.name ? title : `${title} | ${site.name}`;
     <title>{pageTitle}</title>
   </head>
   <body class="min-h-screen flex flex-col">
+    {!hideDonateBar && <CampaignBanner />}
     <Header />
     <main class="flex-1">
       <slot />
     </main>
     <Footer />
     {!hideDonateBar && <FloatingDonateBar />}
+    {!hideDonateBar && <FundraisingModal />}
   </body>
 </html>

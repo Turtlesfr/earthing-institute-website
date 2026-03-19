@@ -1,0 +1,44 @@
+---
+---
+
+<div id="campaign-banner" class="relative bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-300 text-slate-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
+    <div class="flex items-center justify-center gap-3 sm:gap-6 text-center pr-8">
+      <span class="text-xl sm:text-2xl shrink-0" aria-hidden="true">&#9888;&#65039;</span>
+      <p class="text-sm sm:text-base font-medium leading-snug">
+        <strong class="font-bold">We need your help.</strong>
+        The Earthing Institute is a small nonprofit. If everyone reading this gave just $5, our fundraising campaign would be over in a day.
+        <a href="/donate" class="inline-flex items-center ml-2 px-4 py-1 sm:py-1.5 bg-green-primary text-white text-sm font-bold rounded-full hover:bg-green-dark transition-colors whitespace-nowrap">
+          Donate Now
+        </a>
+      </p>
+    </div>
+  </div>
+  <button
+    id="close-campaign-banner"
+    class="absolute top-1/2 right-3 -translate-y-1/2 p-1 text-slate-dark/50 hover:text-slate-dark transition-colors"
+    aria-label="Close banner"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+</div>
+
+<script>
+  const banner = document.getElementById('campaign-banner');
+  const closeBtn = document.getElementById('close-campaign-banner');
+  const dismissed = localStorage.getItem('campaign-banner-dismissed');
+  const dismissedAt = dismissed ? parseInt(dismissed) : 0;
+  const hoursSinceDismiss = (Date.now() - dismissedAt) / (1000 * 60 * 60);
+
+  // Show again after 24 hours — persistent but respectful
+  if (dismissed && hoursSinceDismiss < 24) {
+    banner?.remove();
+  }
+
+  closeBtn?.addEventListener('click', () => {
+    banner?.remove();
+    localStorage.setItem('campaign-banner-dismissed', String(Date.now()));
+  });
+</script>

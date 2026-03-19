@@ -1,0 +1,155 @@
+---
+---
+
+<div id="fundraising-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="modal-backdrop"></div>
+
+  <!-- Modal -->
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden transform scale-95 opacity-0 transition-all duration-300" id="modal-content">
+      <!-- Green header -->
+      <div class="bg-green-primary px-6 sm:px-8 pt-8 pb-12 text-center relative">
+        <button
+          id="close-fundraising-modal"
+          class="absolute top-4 right-4 p-1.5 text-white/60 hover:text-white transition-colors rounded-lg"
+          aria-label="Close"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="w-16 h-16 rounded-full bg-white/15 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-white" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+          </svg>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white leading-tight">
+          A Personal Appeal from<br />Dr. Gaetan Chevalier
+        </h2>
+      </div>
+
+      <!-- Content -->
+      <div class="px-6 sm:px-8 -mt-4">
+        <div class="bg-cream rounded-2xl p-6 border border-cream-dark">
+          <p class="text-slate leading-relaxed mb-4">
+            Dear friend,
+          </p>
+          <p class="text-slate leading-relaxed mb-4">
+            For over 20 years, the Earthing Institute has conducted and published groundbreaking
+            research on how connecting with the Earth improves health. We've published 35+ peer-reviewed
+            studies. We've reached millions through our documentary.
+          </p>
+          <p class="text-slate leading-relaxed mb-4">
+            <strong class="text-slate-dark">But we need your help to continue.</strong>
+            As a small nonprofit, we depend entirely on donations. Unlike big institutions,
+            we have no corporate sponsors, no government grants. Just science, and people
+            like you who believe in it.
+          </p>
+          <p class="text-slate leading-relaxed font-medium">
+            If every person who visited this site donated just <strong class="text-green-primary text-lg">$5</strong>,
+            we could fund our next three studies. Will you help?
+          </p>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="px-6 sm:px-8 py-6 space-y-3">
+        <a
+          href="/donate"
+          class="block w-full text-center px-8 py-4 bg-green-primary text-white text-lg font-bold rounded-full hover:bg-green-dark transition-colors shadow-lg hover:shadow-xl"
+        >
+          Yes, I'll Donate Now
+        </a>
+        <div class="flex gap-2">
+          <a
+            href="/donate"
+            class="flex-1 text-center px-4 py-2.5 bg-green-light text-green-primary text-sm font-semibold rounded-full hover:bg-green-primary hover:text-white transition-colors"
+          >
+            $5
+          </a>
+          <a
+            href="/donate"
+            class="flex-1 text-center px-4 py-2.5 bg-green-light text-green-primary text-sm font-semibold rounded-full hover:bg-green-primary hover:text-white transition-colors"
+          >
+            $25
+          </a>
+          <a
+            href="/donate"
+            class="flex-1 text-center px-4 py-2.5 bg-green-light text-green-primary text-sm font-semibold rounded-full hover:bg-green-primary hover:text-white transition-colors"
+          >
+            $55
+          </a>
+          <a
+            href="/donate"
+            class="flex-1 text-center px-4 py-2.5 bg-green-light text-green-primary text-sm font-semibold rounded-full hover:bg-green-primary hover:text-white transition-colors"
+          >
+            $99
+          </a>
+        </div>
+        <button
+          id="maybe-later-btn"
+          class="block w-full text-center text-sm text-slate-light hover:text-slate transition-colors py-2"
+        >
+          Maybe later
+        </button>
+      </div>
+
+      <!-- Tax note -->
+      <div class="px-6 sm:px-8 pb-6">
+        <p class="text-xs text-slate-light text-center">
+          501(c)(3) nonprofit. All donations are tax-deductible in the US.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('fundraising-modal');
+  const content = document.getElementById('modal-content');
+  const backdrop = document.getElementById('modal-backdrop');
+  const closeBtn = document.getElementById('close-fundraising-modal');
+  const laterBtn = document.getElementById('maybe-later-btn');
+
+  const shown = sessionStorage.getItem('fundraising-modal-shown');
+
+  // Don't show on donate page or if already shown this session
+  const isDonatePageLocal = window.location.pathname.startsWith('/donate');
+
+  function showModal() {
+    if (modal && content) {
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      // Animate in
+      requestAnimationFrame(() => {
+        content.classList.remove('scale-95', 'opacity-0');
+        content.classList.add('scale-100', 'opacity-100');
+      });
+    }
+  }
+
+  function hideModal() {
+    if (modal && content) {
+      content.classList.add('scale-95', 'opacity-0');
+      content.classList.remove('scale-100', 'opacity-100');
+      document.body.style.overflow = '';
+      setTimeout(() => modal.classList.add('hidden'), 300);
+      sessionStorage.setItem('fundraising-modal-shown', '1');
+    }
+  }
+
+  if (!shown && !isDonatePageLocal) {
+    // Show after 12 seconds — enough time to start reading
+    setTimeout(showModal, 12000);
+  }
+
+  closeBtn?.addEventListener('click', hideModal);
+  laterBtn?.addEventListener('click', hideModal);
+  backdrop?.addEventListener('click', hideModal);
+
+  // ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') hideModal();
+  });
+</script>
