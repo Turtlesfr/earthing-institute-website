@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { featuredTestimonials } from '../../data/config';
+
+const categories = [
+  { name: 'Pain & Inflammation', count: 24, icon: '🔥' },
+  { name: 'Sleep', count: 18, icon: '🌙' },
+  { name: 'Stress & Anxiety', count: 12, icon: '🧘' },
+  { name: 'Sports & Recovery', count: 8, icon: '🏃' },
+  { name: 'Cardiovascular', count: 6, icon: '❤️' },
+  { name: 'Autoimmune', count: 9, icon: '🛡️' },
+  { name: 'Skin Conditions', count: 5, icon: '✨' },
+  { name: 'Pet Health', count: 4, icon: '🐾' },
+];
+---
+
+<BaseLayout
+  title="Success Stories"
+  description="Read over 100 documented stories from people whose health improved through earthing. From chronic pain relief to better sleep, these are real results."
+>
+  <!-- Hero -->
+  <section class="bg-green-primary py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">
+        Real Stories, Real Results
+      </h1>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto">
+        Over 100 documented testimonials from people around the world whose lives changed
+        through earthing. These are their stories.
+      </p>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-heading font-bold text-green-primary mb-8 text-center">Browse by Condition</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {categories.map(cat => (
+          <a href="/stories/conditions" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-cream-dark hover:shadow-md hover:border-green-primary/30 transition-all group">
+            <span class="text-2xl">{cat.icon}</span>
+            <div>
+              <h3 class="font-semibold text-slate-dark text-sm group-hover:text-green-primary transition-colors">{cat.name}</h3>
+              <p class="text-xs text-slate-light">{cat.count} stories</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Testimonials -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-heading font-bold text-green-primary mb-8 text-center">Featured Stories</h2>
+      <div class="space-y-6">
+        {featuredTestimonials.map(t => (
+          <blockquote class="bg-cream rounded-2xl p-8 border border-cream-dark">
+            <p class="text-slate italic leading-relaxed mb-4">"{t.quote}"</p>
+            <footer class="flex items-center gap-2">
+              <span class="font-semibold text-slate-dark">{t.name}</span>
+              <span class="text-slate-light">|</span>
+              <span class="text-green-primary font-medium text-sm">{t.condition}</span>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-green-primary">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-4">
+        Help Us Create More Success Stories
+      </h2>
+      <p class="text-lg text-white/80 mb-8">
+        Your donation funds the research that validates these experiences and brings earthing to more people.
+      </p>
+      <a href="/donate" class="inline-flex items-center px-8 py-3.5 bg-white text-green-primary font-semibold rounded-full hover:bg-white/90 transition-colors shadow-lg">
+        Support Our Research
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Thank You" hideDonateBar={true}>
+  <section class="py-24 lg:py-32">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="w-20 h-20 rounded-full bg-green-light flex items-center justify-center mx-auto mb-8">
+        <svg class="w-10 h-10 text-green-primary" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+        </svg>
+      </div>
+      <h1 class="text-4xl font-heading font-bold text-green-primary mb-6">
+        Thank You for Your Generosity
+      </h1>
+      <p class="text-lg text-slate leading-relaxed mb-8">
+        Your tax-deductible donation directly funds peer-reviewed research on earthing and human health.
+        You're helping advance the science that changes lives.
+      </p>
+      <p class="text-slate mb-8">
+        A receipt has been sent to your email. If you have questions about your donation,
+        contact us at <a href="mailto:info@earthinginstitute.net" class="text-green-primary hover:underline">info@earthinginstitute.net</a>.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="inline-flex items-center justify-center px-8 py-3 bg-green-primary text-white font-semibold rounded-full hover:bg-green-dark transition-colors">
+          Return Home
+        </a>
+        <a href="/research" class="inline-flex items-center justify-center px-8 py-3 bg-green-primary/10 text-green-primary font-semibold rounded-full hover:bg-green-primary/20 transition-colors">
+          Explore the Research
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

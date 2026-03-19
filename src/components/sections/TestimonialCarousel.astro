@@ -1,0 +1,126 @@
+---
+import { featuredTestimonials } from '../../data/config';
+---
+
+<section class="py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-heading font-bold text-green-primary mb-4">
+        Real Stories, Real Results
+      </h2>
+      <p class="text-lg text-slate">
+        Over 100 documented stories from people whose lives changed through earthing.
+      </p>
+    </div>
+
+    <!-- Carousel -->
+    <div class="relative max-w-4xl mx-auto">
+      <div id="testimonial-carousel" class="overflow-hidden">
+        <div id="testimonial-track" class="flex transition-transform duration-500 ease-out">
+          {featuredTestimonials.map((testimonial, i) => (
+            <div class="w-full shrink-0 px-4" data-slide={i}>
+              <blockquote class="bg-white rounded-2xl p-8 lg:p-12 shadow-sm border border-cream-dark text-center">
+                <svg class="w-10 h-10 text-green-primary/20 mx-auto mb-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11H10v10H0z" />
+                </svg>
+                <p class="text-lg lg:text-xl text-slate-dark leading-relaxed mb-6 italic">
+                  "{testimonial.quote}"
+                </p>
+                <footer>
+                  <span class="font-semibold text-slate-dark">{testimonial.name}</span>
+                  <span class="mx-2 text-slate-light">|</span>
+                  <span class="text-green-primary font-medium">{testimonial.condition}</span>
+                </footer>
+              </blockquote>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Navigation dots -->
+      <div class="flex items-center justify-center gap-2 mt-8">
+        {featuredTestimonials.map((_, i) => (
+          <button
+            class:list={[
+              'testimonial-dot w-2.5 h-2.5 rounded-full transition-all',
+              i === 0 ? 'bg-green-primary w-8' : 'bg-green-primary/30',
+            ]}
+            data-dot={i}
+            aria-label={`Go to testimonial ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      <!-- Arrow buttons -->
+      <button
+        id="prev-testimonial"
+        class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 hidden lg:flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md border border-cream-dark text-slate hover:text-green-primary transition-colors"
+        aria-label="Previous testimonial"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        id="next-testimonial"
+        class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 hidden lg:flex items-center justify-center w-10 h-10 bg-white rounded-full shadow-md border border-cream-dark text-slate hover:text-green-primary transition-colors"
+        aria-label="Next testimonial"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="text-center mt-10">
+      <a
+        href="/stories"
+        class="inline-flex items-center text-green-primary font-semibold hover:underline"
+      >
+        Read 100+ success stories
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById('testimonial-track');
+  const dots = document.querySelectorAll('.testimonial-dot');
+  const prevBtn = document.getElementById('prev-testimonial');
+  const nextBtn = document.getElementById('next-testimonial');
+  const slideCount = dots.length;
+  let current = 0;
+  let autoplayTimer: ReturnType<typeof setInterval>;
+
+  function goTo(index: number) {
+    current = ((index % slideCount) + slideCount) % slideCount;
+    if (track) track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('bg-green-primary', i === current);
+      dot.classList.toggle('w-8', i === current);
+      dot.classList.toggle('bg-green-primary/30', i !== current);
+      dot.classList.toggle('w-2.5', i !== current);
+    });
+  }
+
+  function startAutoplay() {
+    autoplayTimer = setInterval(() => goTo(current + 1), 6000);
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    startAutoplay();
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => { goTo(i); resetAutoplay(); });
+  });
+
+  prevBtn?.addEventListener('click', () => { goTo(current - 1); resetAutoplay(); });
+  nextBtn?.addEventListener('click', () => { goTo(current + 1); resetAutoplay(); });
+
+  startAutoplay();
+</script>

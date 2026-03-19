@@ -1,0 +1,85 @@
+---
+import { site } from '../../data/config';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-green-dark text-white/90">
+  <!-- Main Footer -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+            <svg viewBox="0 0 24 24" class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 3c-1.5 3-5 6-5 10a5 5 0 0 0 10 0c0-4-3.5-7-5-10z" />
+              <path d="M12 13v5" />
+              <path d="M10 16l2-2 2 2" />
+            </svg>
+          </div>
+          <span class="font-heading text-lg font-bold text-white">The Earthing Institute</span>
+        </div>
+        <p class="text-white/70 text-sm leading-relaxed">
+          A 501(c)(3) nonprofit research and education organization advancing
+          the science of grounding for human health.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-heading text-base font-bold text-white mb-4">Explore</h4>
+        <ul class="space-y-2">
+          <li><a href="/mission" class="text-sm text-white/70 hover:text-white transition-colors">Our Mission</a></li>
+          <li><a href="/research" class="text-sm text-white/70 hover:text-white transition-colors">Research</a></li>
+          <li><a href="/basics" class="text-sm text-white/70 hover:text-white transition-colors">Earthing Basics</a></li>
+          <li><a href="/stories" class="text-sm text-white/70 hover:text-white transition-colors">Success Stories</a></li>
+          <li><a href="/faq" class="text-sm text-white/70 hover:text-white transition-colors">FAQs</a></li>
+        </ul>
+      </div>
+
+      <!-- Get Involved -->
+      <div>
+        <h4 class="font-heading text-base font-bold text-white mb-4">Get Involved</h4>
+        <ul class="space-y-2">
+          <li><a href="/donate" class="text-sm text-white/70 hover:text-white transition-colors">Donate</a></li>
+          <li><a href="/courses" class="text-sm text-white/70 hover:text-white transition-colors">Certification Courses</a></li>
+          <li><a href="/blog" class="text-sm text-white/70 hover:text-white transition-colors">Blog</a></li>
+          <li><a href="/media" class="text-sm text-white/70 hover:text-white transition-colors">Media</a></li>
+          <li><a href="/contact" class="text-sm text-white/70 hover:text-white transition-colors">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 class="font-heading text-base font-bold text-white mb-4">Stay Connected</h4>
+        <p class="text-sm text-white/70 mb-4">Get research updates and earthing news delivered to your inbox.</p>
+        <form class="space-y-2">
+          <input
+            type="email"
+            placeholder="Your email address"
+            required
+            class="w-full px-4 py-2.5 bg-white/10 border border-white/20 rounded-lg text-sm text-white placeholder-white/50 focus:outline-none focus:border-white/50 transition-colors"
+          />
+          <button
+            type="submit"
+            class="w-full px-4 py-2.5 bg-white text-green-dark text-sm font-semibold rounded-lg hover:bg-white/90 transition-colors"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-white/50">
+        &copy; {year} {site.name}. All rights reserved. 501(c)(3) nonprofit organization.
+      </p>
+      <p class="text-sm text-white/50">
+        All donations are tax-deductible in the United States.
+      </p>
+    </div>
+  </div>
+</footer>

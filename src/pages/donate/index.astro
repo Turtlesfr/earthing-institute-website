@@ -1,0 +1,283 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { donationTiers, impactExamples, site } from '../../data/config';
+---
+
+<BaseLayout
+  title="Donate"
+  description="Support the Earthing Institute's mission to advance peer-reviewed research on grounding and human health. Your tax-deductible donation funds the next breakthrough study."
+  hideDonateBar={true}
+>
+  <!-- Hero with urgency -->
+  <section class="bg-green-primary py-16 lg:py-24 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5">
+      <svg class="w-full h-full" preserveAspectRatio="none">
+        <pattern id="donate-dots" width="30" height="30" patternUnits="userSpaceOnUse">
+          <circle cx="15" cy="15" r="1.5" fill="white" />
+        </pattern>
+        <rect width="100%" height="100%" fill="url(#donate-dots)" />
+      </svg>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full mb-6">
+        <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+        <span class="text-sm font-medium text-white/90">501(c)(3) Tax-Deductible</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-[1.1]">
+        Fund the Science<br />That Changes Lives
+      </h1>
+      <p class="text-lg lg:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Every peer-reviewed study, every breakthrough finding, every life changed
+        through earthing research — it starts with your generosity.
+      </p>
+
+      <!-- Progress bar -->
+      <div class="max-w-lg mx-auto">
+        <div class="flex justify-between text-sm text-white/70 mb-2">
+          <span class="font-semibold text-white">$4,000 raised</span>
+          <span>$10,000 goal</span>
+        </div>
+        <div class="w-full h-4 bg-white/20 rounded-full overflow-hidden">
+          <div class="h-full bg-white rounded-full transition-all duration-1000 relative" style="width: 40%">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+          </div>
+        </div>
+        <p class="text-sm text-white/60 mt-3">Every dollar directly funds peer-reviewed research</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Calculator -->
+  <section class="py-16 lg:py-20 bg-white border-b border-cream-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl lg:text-3xl font-heading font-bold text-green-primary mb-3">
+          See Your Impact
+        </h2>
+        <p class="text-slate">Choose an amount to see what your donation makes possible.</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-8" id="impact-buttons">
+        {impactExamples.map((item, i) => (
+          <button
+            class:list={[
+              'impact-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all border-2',
+              i === 1
+                ? 'bg-green-primary text-white border-green-primary'
+                : 'bg-white text-slate-dark border-cream-dark hover:border-green-primary hover:text-green-primary',
+            ]}
+            data-amount={item.amount}
+            data-impact={item.impact}
+          >
+            ${item.amount.toLocaleString()}
+          </button>
+        ))}
+      </div>
+
+      <div class="bg-green-light/50 rounded-2xl p-8 text-center border border-green-primary/10">
+        <p class="text-green-dark text-lg font-medium" id="impact-text">
+          {impactExamples[1].impact}
+        </p>
+        <a
+          href="#tiers"
+          class="inline-flex items-center mt-4 px-6 py-3 bg-green-primary text-white font-semibold rounded-full hover:bg-green-dark transition-colors"
+        >
+          Donate ${impactExamples[1].amount}
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Donation Tiers -->
+  <section id="tiers" class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-heading font-bold text-green-primary mb-4">
+          Choose Your Level of Support
+        </h2>
+        <p class="text-lg text-slate max-w-2xl mx-auto">
+          Every tier includes exclusive benefits as a thank-you for your generosity.
+          All donations are tax-deductible under our 501(c)(3) status.
+        </p>
+
+        <!-- Recurring toggle -->
+        <div class="flex items-center justify-center gap-3 mt-8">
+          <span class="text-sm text-slate" id="one-time-label">One-time</span>
+          <button
+            id="recurring-toggle"
+            class="relative w-12 h-6 bg-cream-dark rounded-full transition-colors"
+            role="switch"
+            aria-checked="false"
+          >
+            <span class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transition-transform" id="toggle-dot"></span>
+          </button>
+          <span class="text-sm text-slate" id="recurring-label">Monthly</span>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {donationTiers.map((tier) => (
+          <div
+            class:list={[
+              'relative rounded-2xl p-6 lg:p-8 transition-all hover:-translate-y-1 hover:shadow-lg border',
+              'featured' in tier && tier.featured
+                ? 'bg-white ring-2 ring-green-primary shadow-md border-green-primary'
+                : 'bg-white border-cream-dark shadow-sm',
+            ]}
+          >
+            {'featured' in tier && tier.featured && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span class="inline-flex items-center px-3 py-1 bg-green-primary text-white text-xs font-bold rounded-full">
+                  Most Popular
+                </span>
+              </div>
+            )}
+
+            <div class="text-sm font-semibold text-slate-light uppercase tracking-wide mb-2">
+              {tier.name}
+            </div>
+            <div class="text-4xl font-heading font-bold text-green-primary mb-1">
+              ${tier.amount.toLocaleString()}
+            </div>
+            <div class="text-sm text-slate-light mb-6" id={`tier-freq-${tier.amount}`}>
+              One-time donation
+            </div>
+
+            <ul class="space-y-3 mb-8">
+              {tier.benefits.map((benefit) => (
+                <li class="flex items-start gap-2.5">
+                  <svg class="w-5 h-5 text-green-primary shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-sm text-slate">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={tier.stripeLink === '#' ? '#' : tier.stripeLink}
+              class:list={[
+                'block w-full text-center px-6 py-3 font-semibold rounded-full transition-colors',
+                'featured' in tier && tier.featured
+                  ? 'bg-green-primary text-white hover:bg-green-dark shadow-md'
+                  : 'bg-green-primary/10 text-green-primary hover:bg-green-primary hover:text-white',
+              ]}
+            >
+              Donate ${tier.amount.toLocaleString()}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Donor Wall -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-heading font-bold text-green-primary mb-4">
+          Thank You to Our Supporters
+        </h2>
+        <p class="text-slate">
+          These generous individuals and organizations make our research possible.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="text-center p-6 bg-amber-50 rounded-2xl border border-amber-200">
+          <div class="text-2xl mb-2">&#9733;</div>
+          <h3 class="font-heading font-bold text-amber-800 mb-1">Gold</h3>
+          <p class="text-sm text-amber-700">Wags 2 Whiskers</p>
+        </div>
+
+        <div class="text-center p-6 bg-gray-50 rounded-2xl border border-gray-200">
+          <div class="text-2xl mb-2">&#9733;</div>
+          <h3 class="font-heading font-bold text-gray-600 mb-1">Silver</h3>
+          <p class="text-sm text-gray-500">Earthing Revolution</p>
+        </div>
+
+        <div class="text-center p-6 bg-orange-50 rounded-2xl border border-orange-200 lg:col-span-2">
+          <div class="text-2xl mb-2">&#9733;</div>
+          <h3 class="font-heading font-bold text-orange-800 mb-3">Bronze</h3>
+          <div class="flex flex-wrap justify-center gap-x-4 gap-y-1">
+            <span class="text-sm text-orange-700">MA Luisa Lopez</span>
+            <span class="text-sm text-orange-700">Nancy Koehler</span>
+            <span class="text-sm text-orange-700">Eve Silver</span>
+            <span class="text-sm text-orange-700">Dale Jackson</span>
+            <span class="text-sm text-orange-700">Anna Marinelli</span>
+            <span class="text-sm text-orange-700">Carla Preyer</span>
+            <span class="text-sm text-orange-700">Derrick Storey</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <p class="text-slate text-sm mb-2">Want to see your name here?</p>
+        <a href="#tiers" class="inline-flex items-center text-green-primary font-semibold hover:underline">
+          Join our supporters
+          <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tax Info -->
+  <section class="py-12 bg-cream-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm text-slate">
+        The Earthing Institute is a 501(c)(3) nonprofit organization.
+        All donations are tax-deductible to the extent allowed by law.
+        For questions about donations, contact us at
+        <a href={`mailto:${site.email}`} class="text-green-primary hover:underline">{site.email}</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Impact calculator
+  const buttons = document.querySelectorAll('.impact-btn');
+  const impactText = document.getElementById('impact-text');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => {
+        b.classList.remove('bg-green-primary', 'text-white', 'border-green-primary');
+        b.classList.add('bg-white', 'text-slate-dark', 'border-cream-dark');
+      });
+      btn.classList.add('bg-green-primary', 'text-white', 'border-green-primary');
+      btn.classList.remove('bg-white', 'text-slate-dark', 'border-cream-dark');
+      if (impactText) impactText.textContent = (btn as HTMLElement).dataset.impact || '';
+    });
+  });
+
+  // Recurring toggle
+  const toggle = document.getElementById('recurring-toggle');
+  const dot = document.getElementById('toggle-dot');
+  let isRecurring = false;
+
+  toggle?.addEventListener('click', () => {
+    isRecurring = !isRecurring;
+    toggle.setAttribute('aria-checked', String(isRecurring));
+    if (isRecurring) {
+      toggle.classList.add('bg-green-primary');
+      toggle.classList.remove('bg-cream-dark');
+      dot?.classList.add('translate-x-6');
+    } else {
+      toggle.classList.remove('bg-green-primary');
+      toggle.classList.add('bg-cream-dark');
+      dot?.classList.remove('translate-x-6');
+    }
+
+    // Update tier frequency text
+    document.querySelectorAll('[id^="tier-freq-"]').forEach(el => {
+      el.textContent = isRecurring ? 'Monthly donation' : 'One-time donation';
+    });
+  });
+</script>

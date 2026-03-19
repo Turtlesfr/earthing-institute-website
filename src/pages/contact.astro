@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/config';
+---
+
+<BaseLayout
+  title="Contact Us"
+  description="Get in touch with the Earthing Institute. We'd love to hear from you about research, donations, courses, or general questions."
+>
+  <section class="py-16 lg:py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-heading font-bold text-green-primary mb-4">Contact Us</h1>
+        <p class="text-lg text-slate">
+          Have a question about earthing, our research, or how to support our mission?
+          We'd love to hear from you.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-cream-dark">
+        <form class="space-y-6">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-slate-dark mb-2">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 bg-cream border border-cream-dark rounded-xl text-slate-dark placeholder-slate-light focus:outline-none focus:border-green-primary focus:ring-2 focus:ring-green-primary/20 transition-all"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-dark mb-2">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 bg-cream border border-cream-dark rounded-xl text-slate-dark placeholder-slate-light focus:outline-none focus:border-green-primary focus:ring-2 focus:ring-green-primary/20 transition-all"
+                placeholder="your@email.com"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="subject" class="block text-sm font-medium text-slate-dark mb-2">Subject</label>
+            <select
+              id="subject"
+              name="subject"
+              class="w-full px-4 py-3 bg-cream border border-cream-dark rounded-xl text-slate-dark focus:outline-none focus:border-green-primary focus:ring-2 focus:ring-green-primary/20 transition-all"
+            >
+              <option value="">Select a topic</option>
+              <option value="research">Research inquiry</option>
+              <option value="donation">Donation question</option>
+              <option value="courses">Courses & certification</option>
+              <option value="media">Media & press</option>
+              <option value="general">General question</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-slate-dark mb-2">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              class="w-full px-4 py-3 bg-cream border border-cream-dark rounded-xl text-slate-dark placeholder-slate-light focus:outline-none focus:border-green-primary focus:ring-2 focus:ring-green-primary/20 transition-all resize-y"
+              placeholder="Your message..."
+            ></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <div class="hidden" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full sm:w-auto px-8 py-3 bg-green-primary text-white font-semibold rounded-full hover:bg-green-dark transition-colors shadow-md"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <div class="mt-12 text-center">
+        <p class="text-slate">
+          You can also reach us directly at
+          <a href={`mailto:${site.email}`} class="text-green-primary font-semibold hover:underline">{site.email}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

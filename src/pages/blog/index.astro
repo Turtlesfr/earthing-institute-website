@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = [
+  { title: 'Dr. Park\'s Barefoot Lecture 24', date: 'October 20, 2025', excerpt: 'Dr. Park continues his groundbreaking barefoot walking movement in Korea, promoting the health benefits of direct earth contact.' },
+  { title: 'Beware: Amazon Seller Claiming to be The Earthing Institute', date: 'September 20, 2023', excerpt: 'An important advisory about unauthorized sellers using our name on Amazon. Learn how to identify official Earthing Institute products.' },
+  { title: 'Dr. Park Proposes Barefoot Walking to WHO', date: 'July 23, 2023', excerpt: 'Dr. Park has formally proposed that barefoot walking be added to the WHO\'s Global Action Plan on Physical Activity.' },
+  { title: 'Grounded Yoga: A New Practice for Deeper Connection', date: 'March 15, 2023', excerpt: 'Exploring how combining yoga with direct earth contact can enhance the benefits of both practices.' },
+  { title: 'CBS News Baltimore Features Earthing Research', date: 'January 8, 2023', excerpt: 'Dr. Chevalier discusses the latest earthing research findings in a feature segment on CBS News Baltimore.' },
+  { title: 'Earthing in Namibia: Stories from the Field', date: 'September 12, 2022', excerpt: 'A look at how earthing practices are being adopted in communities across Namibia and southern Africa.' },
+];
+---
+
+<BaseLayout
+  title="Blog"
+  description="News, research updates, and stories from the Earthing Institute. Stay informed about the latest in grounding science."
+>
+  <section class="bg-green-primary py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">Blog</h1>
+      <p class="text-lg text-white/80">News, research updates, and stories from the earthing community.</p>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-6">
+        {posts.map(post => (
+          <article class="bg-white rounded-2xl p-6 lg:p-8 border border-cream-dark hover:shadow-md transition-shadow group cursor-pointer">
+            <time class="text-sm text-slate-light">{post.date}</time>
+            <h2 class="text-xl font-heading font-bold text-slate-dark mt-2 mb-3 group-hover:text-green-primary transition-colors">
+              {post.title}
+            </h2>
+            <p class="text-slate leading-relaxed">{post.excerpt}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

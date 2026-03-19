@@ -1,0 +1,71 @@
+---
+---
+
+<div
+  id="floating-donate"
+  class="fixed bottom-0 left-0 right-0 z-40 translate-y-full transition-transform duration-500 ease-out"
+>
+  <div class="bg-white/95 backdrop-blur-sm border-t border-cream-dark shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+      <!-- Progress + Message -->
+      <div class="flex items-center gap-4 flex-1 min-w-0">
+        <!-- Mini progress bar -->
+        <div class="hidden sm:flex items-center gap-3 shrink-0">
+          <div class="w-24 h-2 bg-cream-dark rounded-full overflow-hidden">
+            <div class="h-full bg-green-primary rounded-full" style="width: 40%"></div>
+          </div>
+          <span class="text-xs text-slate-light whitespace-nowrap">40% of goal</span>
+        </div>
+        <p class="text-sm text-slate-dark truncate">
+          <span class="font-semibold text-green-primary">Help fund the next study.</span>
+          <span class="hidden md:inline"> Your donation advances groundbreaking earthing research.</span>
+        </p>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-2 shrink-0">
+        <a
+          href="/donate"
+          class="inline-flex items-center px-5 py-2 bg-green-primary text-white text-sm font-semibold rounded-full hover:bg-green-dark transition-colors"
+        >
+          Donate Now
+        </a>
+        <button
+          id="dismiss-donate-bar"
+          class="p-1.5 text-slate-light hover:text-slate-dark transition-colors rounded-lg"
+          aria-label="Dismiss"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const bar = document.getElementById('floating-donate');
+  const dismissBtn = document.getElementById('dismiss-donate-bar');
+  const dismissed = sessionStorage.getItem('donate-bar-dismissed');
+
+  if (!dismissed) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          bar?.classList.remove('translate-y-full');
+        }
+      },
+      { threshold: 0 }
+    );
+
+    // Show after scrolling past the first screen
+    const hero = document.querySelector('[data-hero]') || document.querySelector('main > *:first-child');
+    if (hero) observer.observe(hero);
+  }
+
+  dismissBtn?.addEventListener('click', () => {
+    bar?.classList.add('translate-y-full');
+    sessionStorage.setItem('donate-bar-dismissed', '1');
+  });
+</script>

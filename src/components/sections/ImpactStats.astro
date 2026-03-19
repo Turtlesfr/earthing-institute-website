@@ -1,0 +1,83 @@
+---
+import { impactStats } from '../../data/config';
+
+const icons: Record<string, string> = {
+  microscope: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-8 h-8"><path d="M9 3h6M12 3v3M7.5 9.5a4.5 4.5 0 109 0 4.5 4.5 0 00-9 0zM12 14v4M5 21h14M8 18h8"/></svg>',
+  play: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-8 h-8"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/></svg>',
+  calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-8 h-8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+  globe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-8 h-8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>',
+};
+---
+
+<section class="bg-green-primary py-16 lg:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      {impactStats.map((stat) => (
+        <div class="text-center group" data-animate-stat>
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 text-white/80 mb-4 group-hover:bg-white/20 transition-colors">
+            <Fragment set:html={icons[stat.icon]} />
+          </div>
+          <div
+            class="text-4xl lg:text-5xl font-heading font-bold text-white mb-2"
+            data-count-target={stat.value}
+          >
+            {stat.value}
+          </div>
+          <div class="text-sm lg:text-base text-white/70 font-medium">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Animated counter on scroll
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target as HTMLElement;
+          const target = el.dataset.countTarget || '';
+          const numericMatch = target.match(/[\d,]+/);
+          if (!numericMatch) return;
+
+          const suffix = target.replace(numericMatch[0], '');
+          const prefix = target.slice(0, target.indexOf(numericMatch[0]));
+          const finalNum = parseFloat(numericMatch[0].replace(/,/g, ''));
+          const duration = 1500;
+          const startTime = performance.now();
+
+          const countEl = el.querySelector('[data-count-target]') || el;
+
+          function animate(now: number) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3); // ease out cubic
+            const current = Math.floor(eased * finalNum);
+
+            let display = current.toLocaleString();
+            if (finalNum >= 1000 && current >= 1000) {
+              display = (current / 1000).toFixed(current >= 10000 ? 0 : 1) + (target.includes('M') ? 'M' : 'K');
+            }
+
+            countEl.textContent = prefix + display + suffix;
+
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              countEl.textContent = target;
+            }
+          }
+
+          requestAnimationFrame(animate);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll('[data-animate-stat]').forEach((el) => observer.observe(el));
+</script>

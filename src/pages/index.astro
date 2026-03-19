@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import ImpactStats from '../components/sections/ImpactStats.astro';
+import MissionPreview from '../components/sections/MissionPreview.astro';
+import ResearchPreview from '../components/sections/ResearchPreview.astro';
+import FundraisingCTA from '../components/sections/FundraisingCTA.astro';
+import TestimonialCarousel from '../components/sections/TestimonialCarousel.astro';
+import WhatIsEarthing from '../components/sections/WhatIsEarthing.astro';
+import MediaHighlight from '../components/sections/MediaHighlight.astro';
+import Newsletter from '../components/sections/Newsletter.astro';
+---
+
+<BaseLayout
+  title="The Earthing Institute — Advancing the Science of Grounding"
+  description="The Earthing Institute is a 501(c)(3) nonprofit advancing peer-reviewed research on how physical connection with the Earth reduces inflammation, improves sleep, and supports healing. Support our mission."
+>
+  <Hero />
+  <ImpactStats />
+  <MissionPreview />
+  <ResearchPreview />
+  <FundraisingCTA />
+  <TestimonialCarousel />
+  <WhatIsEarthing />
+  <MediaHighlight />
+  <Newsletter />
+</BaseLayout>

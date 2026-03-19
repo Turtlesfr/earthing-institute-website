@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Media"
+  description="Watch the Earthing documentary, explore interviews with researchers, and discover articles and videos about grounding science."
+>
+  <section class="bg-green-primary py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">Media</h1>
+      <p class="text-lg text-white/80">Interviews, documentaries, articles, and videos about earthing science.</p>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- The Movie -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-6">The Earthing Movie</h2>
+        <div class="bg-white rounded-2xl overflow-hidden border border-cream-dark">
+          <div class="aspect-video bg-gradient-to-br from-slate-dark to-green-dark flex items-center justify-center">
+            <a
+              href="https://www.youtube.com/watch?v=44ddtR0XDVU"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center shadow-xl hover:scale-110 transition-transform"
+            >
+              <svg class="w-8 h-8 text-green-primary ml-1" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </a>
+          </div>
+          <div class="p-6">
+            <h3 class="font-heading font-bold text-slate-dark text-lg mb-2">The Remarkable Science of Grounding</h3>
+            <p class="text-slate text-sm leading-relaxed">
+              This award-winning documentary has been viewed over 5.9 million times. It explores the scientific
+              research behind earthing and features interviews with leading researchers, doctors, and people
+              whose health has been transformed by connecting with the Earth.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interviews -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-6">Interviews</h2>
+        <div class="space-y-4">
+          {[
+            'Dr. Gaetan Chevalier on CBS News Baltimore',
+            'Clint Ober on the Discovery of Earthing',
+            'Dr. Stephen Sinatra on Heart Health and Grounding',
+            'Dr. Pawel Sokal on 30 Years of Earthing Research',
+          ].map(title => (
+            <div class="flex items-center gap-4 p-4 bg-white rounded-xl border border-cream-dark hover:shadow-sm transition-shadow">
+              <div class="w-10 h-10 rounded-lg bg-green-light flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-green-primary" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <span class="text-sm font-medium text-slate-dark">{title}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Book -->
+      <div>
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-6">The Earthing Book</h2>
+        <div class="bg-white rounded-2xl p-8 border border-cream-dark">
+          <p class="text-slate leading-relaxed mb-4">
+            Published in 17 languages, <em>Earthing: The Most Important Health Discovery Ever?</em>
+            by Clint Ober, Dr. Stephen Sinatra, and Martin Zucker presents the groundbreaking
+            science and personal stories behind earthing.
+          </p>
+          <a
+            href="https://www.amazon.com/Earthing-Important-Health-Discovery-Ever/dp/1591203740"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center text-green-primary font-semibold text-sm hover:underline"
+          >
+            Get the book on Amazon
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

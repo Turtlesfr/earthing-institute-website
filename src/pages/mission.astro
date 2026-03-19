@@ -1,0 +1,209 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Our Mission"
+  description="The Earthing Institute is a 501(c)(3) nonprofit advancing research on how physical connection with the Earth influences inflammation, nervous system regulation, and human health."
+>
+  <!-- Hero -->
+  <section class="bg-green-primary py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">
+        Our Vision & Mission
+      </h1>
+      <p class="text-xl text-white/80 font-heading italic max-w-2xl mx-auto">
+        A New Health and Healing Frontier
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission Statement -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-cream-dark mb-12">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-6">Our Mission</h2>
+        <p class="text-lg text-slate leading-relaxed mb-6">
+          The Earthing Institute is a nonprofit research and education organization focused on
+          understanding how direct physical connection with the Earth influences inflammation,
+          nervous system regulation, and human health.
+        </p>
+        <p class="text-lg text-slate leading-relaxed mb-6">
+          Chronic inflammation underlies many of today's most costly and debilitating conditions.
+          Over more than two decades, peer-reviewed research has explored grounding as a low-cost,
+          non-invasive intervention with measurable physiological effects.
+        </p>
+        <p class="text-lg text-slate leading-relaxed">
+          The Institute exists to advance rigorous research, curate credible scientific findings,
+          and responsibly educate the public and health professionals worldwide.
+        </p>
+      </div>
+
+      <div class="bg-green-light/50 rounded-3xl p-8 lg:p-12 border border-green-primary/10 mb-12">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-6">Our Vision</h2>
+        <p class="text-lg text-slate leading-relaxed mb-6">
+          We envision the day when every human being (and pet) on this planet will be earthed
+          throughout their daily life. When that day comes, it will be common knowledge that
+          earthing is as important for health as good nutrition, sleep, exercise, and a positive
+          mental attitude.
+        </p>
+        <p class="text-lg text-slate leading-relaxed">
+          Our mission is to disseminate this vital knowledge to as many people as we can throughout
+          the world. We want to further research regarding the health benefits of earthing, and to
+          have our website serve as a repository of all information related to earthing.
+        </p>
+      </div>
+
+      <!-- President's Message -->
+      <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-cream-dark mb-12">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-8">
+          A Message from Our President
+        </h2>
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="shrink-0">
+            <div class="w-40 h-40 rounded-2xl bg-gradient-to-br from-green-light to-cream-dark flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-20 h-20 rounded-full bg-green-primary/10 mx-auto flex items-center justify-center">
+                  <svg class="w-10 h-10 text-green-primary/40" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                  </svg>
+                </div>
+                <p class="text-xs text-green-primary/50 mt-2">Photo</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="text-slate leading-relaxed mb-4">
+              As a researcher involved primarily with the physics of electricity and the body's
+              electrophysiology (how the body produces and utilizes electrical energy), I find it
+              amazing that at this point in the human timeline we are just exploring the Earth as
+              a resource for health and healing.
+            </p>
+            <p class="text-slate leading-relaxed mb-4">
+              Past cultures put great emphasis on connectedness with the Earth, a relationship still
+              honored by many indigenous people today. To what extent this connection was recognized
+              as a healing factor among past cultures is not a subject that has been studied. Now,
+              finally, science is exploring the dynamics and benefits of this connection.
+            </p>
+            <p class="text-slate leading-relaxed mb-4">
+              The studies I have been involved with have painted an intriguing picture of what happens
+              when we connect to the Earth. In short, it is as if a switch has been turned on, and,
+              in response, the body's inner workings start functioning more efficiently and robustly.
+            </p>
+            <p class="font-heading font-bold text-green-primary mt-6">
+              Gaetan Chevalier, Ph.D.
+            </p>
+            <p class="text-sm text-slate-light">
+              President, The Earthing Institute<br />
+              Director since 2009
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Board of Directors -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-heading font-bold text-green-primary mb-4">
+          Board of Directors
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        {[
+          {
+            name: 'Gaetan Chevalier, Ph.D.',
+            role: 'President',
+            bio: '45-year career in engineering physics, biophysics, and electrophysiology. Director of the Earthing Institute since 2009.',
+          },
+          {
+            name: 'Dr. Katerina Brzovic',
+            role: 'Treasurer',
+            bio: 'Chilean veterinarian and acupuncturist. Founder of Contacto Tierra, leading earthing education across Latin America and Spain.',
+          },
+          {
+            name: 'Dr. Richard Kotz',
+            role: 'CFO',
+            bio: 'Retired FDA statistician with 25 years of service reviewing clinical trials for medical devices. FDA Lifetime Achievement Award 2016.',
+          },
+        ].map(member => (
+          <div class="bg-cream rounded-2xl p-6 text-center border border-cream-dark">
+            <div class="w-24 h-24 rounded-full bg-green-light mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-12 h-12 text-green-primary/30" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+              </svg>
+            </div>
+            <h3 class="text-lg font-heading font-bold text-green-primary mb-1">{member.name}</h3>
+            <p class="text-sm font-semibold text-slate-light mb-3">{member.role}</p>
+            <p class="text-sm text-slate leading-relaxed">{member.bio}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Scientific Advisors -->
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-4">
+          Scientific Advisory Board
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          { name: 'James Oschman, Ph.D.', role: 'Nature\'s Own Research Association' },
+          { name: 'Tracy Latz, M.D., M.S.', role: 'Integrative Psychiatrist' },
+          { name: 'Pawel Sokal, M.D., Ph.D.', role: 'Neurosurgeon, Earthing Research Pioneer' },
+          { name: 'Tina Michaud-Gray, RN, LMT', role: 'Pain & Soft Tissue Specialist' },
+          { name: 'Charles Munier, D.M.D.', role: 'Retired Dentist, TMJ Treatment' },
+          { name: 'Jeffrey Spencer, M.A., D.C.', role: 'Former Olympic Cyclist, Tour de France Team' },
+        ].map(advisor => (
+          <div class="bg-cream rounded-xl p-4 border border-cream-dark">
+            <p class="font-semibold text-slate-dark text-sm">{advisor.name}</p>
+            <p class="text-xs text-slate-light">{advisor.role}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- In Memoriam -->
+      <div class="mt-16 text-center">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-8">In Memoriam</h2>
+        <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          {[
+            { name: 'Martin Zucker', years: '1937-2020', role: 'Co-author of the Earthing book' },
+            { name: 'Stephen Sinatra, M.D.', years: '1946-2022', role: 'Integrative cardiologist, discovered earthing as anti-inflammatory' },
+            { name: 'Karol Sokal, M.D., Ph.D.', years: '1944-2023', role: 'Pioneer of earthing research since 1989' },
+          ].map(person => (
+            <div class="p-6">
+              <p class="font-heading font-bold text-slate-dark">{person.name}</p>
+              <p class="text-sm text-slate-light">{person.years}</p>
+              <p class="text-sm text-slate mt-2">{person.role}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-green-primary">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-4">
+        Support Our Mission
+      </h2>
+      <p class="text-lg text-white/80 mb-8">
+        Help us advance the science of grounding and bring this vital knowledge to the world.
+      </p>
+      <a
+        href="/donate"
+        class="inline-flex items-center px-8 py-3.5 bg-white text-green-primary font-semibold rounded-full hover:bg-white/90 transition-colors shadow-lg"
+      >
+        Make a Tax-Deductible Donation
+        <svg class="w-5 h-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const studies = [
+  { title: 'Earthing effects on mitochondrial function: ATP production and ROS generation', year: 2025, journal: 'Journal of Inflammation Research', topic: 'Inflammation', finding: 'Grounding significantly increased ATP production while reducing reactive oxygen species.' },
+  { title: 'Randomized, double-blind, placebo-controlled study on sleep quality with Earthing mat', year: 2025, journal: 'Sleep Medicine', topic: 'Sleep', finding: 'Participants using grounded mats showed significant improvements in sleep onset latency and duration.' },
+  { title: 'Earthing as Lifestyle Medicine for Chronic Diabetic Wounds', year: 2024, journal: 'Biomedical Journal', topic: 'Healing', finding: 'Grounding accelerated wound healing in diabetic patients as a complementary treatment.' },
+  { title: 'Prevention and Treatment of COVID-19 by Earthing', year: 2023, journal: 'Biomedical Journal', topic: 'Immunity', finding: 'Explored earthing as a supportive intervention for COVID-19 recovery through inflammation reduction.' },
+  { title: 'Effect of Earthing Mat on Stress-Induced Anxiety in Rats', year: 2023, journal: 'Biomedical Research', topic: 'Stress', finding: 'Grounded rats showed significantly reduced anxiety markers compared to ungrounded controls.' },
+  { title: 'Grounding as Universal Anti-Inflammatory Remedy', year: 2022, journal: 'Biomedical Journal', topic: 'Inflammation', finding: 'Comprehensive review confirming earthing reduces inflammation markers across multiple studies.' },
+  { title: 'Effects of Grounding on Meditation Quality', year: 2022, journal: 'Journal of Alternative Medicine', topic: 'Wellness', finding: 'Grounding during meditation enhanced the depth and physiological markers of meditative states.' },
+  { title: 'Grounding Improves Sleep in Mild Alzheimer\'s Disease', year: 2022, journal: 'Journal of Alzheimer\'s Disease', topic: 'Sleep', finding: 'Grounding improved sleep quality measures in patients with mild Alzheimer\'s disease.' },
+  { title: 'Grounding on Bodyworkers\' Pain and Quality of Life', year: 2019, journal: 'Journal of Bodywork & Movement', topic: 'Pain', finding: 'Massage therapists who grounded reported less pain and improved overall quality of life.' },
+  { title: 'Grounding Patients with Hypertension', year: 2018, journal: 'Alternative Therapies', topic: 'Blood', finding: 'Grounding showed positive effects on blood pressure in hypertensive patients.' },
+  { title: 'Electrical Grounding Improves Vagal Tone in Preterm Infants', year: 2017, journal: 'Neonatology', topic: 'Healing', finding: 'Grounding significantly improved vagal tone and resilience in premature infants in the NICU.' },
+  { title: 'The Effect of Grounding on Blood Viscosity', year: 2015, journal: 'Journal of Alternative Medicine', topic: 'Blood', finding: 'Grounding reduced blood viscosity — a major factor in cardiovascular disease.' },
+  { title: 'Earthing (Grounding) the Human Body Reduces Blood Viscosity', year: 2013, journal: 'Journal of Alternative Medicine', topic: 'Blood', finding: 'First study demonstrating that earthing thins blood by increasing zeta potential of red blood cells.' },
+  { title: 'Earthing the Human Body Influences Physiologic Processes', year: 2011, journal: 'Journal of Alternative Medicine', topic: 'Inflammation', finding: 'Documented multiple physiological changes including reduced inflammation and improved immunity.' },
+  { title: 'The Biologic Effects of Grounding the Human Body During Sleep', year: 2004, journal: 'Journal of Alternative Medicine', topic: 'Sleep', finding: 'The foundational study: grounding normalized cortisol rhythms and improved sleep quality.' },
+];
+
+const topics = [...new Set(studies.map(s => s.topic))].sort();
+const years = [...new Set(studies.map(s => s.year))].sort((a, b) => b - a);
+
+const topicColors: Record<string, string> = {
+  'Inflammation': 'bg-red-50 text-red-700 border-red-200',
+  'Sleep': 'bg-indigo-50 text-indigo-700 border-indigo-200',
+  'Blood': 'bg-rose-50 text-rose-700 border-rose-200',
+  'Pain': 'bg-orange-50 text-orange-700 border-orange-200',
+  'Healing': 'bg-teal-50 text-teal-700 border-teal-200',
+  'Stress': 'bg-purple-50 text-purple-700 border-purple-200',
+  'Immunity': 'bg-sky-50 text-sky-700 border-sky-200',
+  'Wellness': 'bg-emerald-50 text-emerald-700 border-emerald-200',
+};
+---
+
+<BaseLayout
+  title="Research"
+  description="Explore 35+ peer-reviewed studies spanning over 20 years of earthing research. From inflammation reduction to sleep improvement, the science of grounding is extensive and growing."
+>
+  <!-- Hero -->
+  <section class="bg-green-primary py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">
+        20+ Years of Peer-Reviewed Science
+      </h1>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto mb-8">
+        The modern pursuit of scientific evidence that grounding impacts human physiology and health
+        began with Drs. Karol and Pawel Sokal in Poland and Clint Ober in the United States in the 1990s.
+        Since then, 35+ studies have been published in peer-reviewed journals.
+      </p>
+      <a
+        href="/donate"
+        class="inline-flex items-center px-6 py-3 bg-white text-green-primary font-semibold rounded-full hover:bg-white/90 transition-colors"
+      >
+        Fund the Next Study
+        <svg class="w-4 h-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="sticky top-16 lg:top-20 z-30 bg-white border-b border-cream-dark shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="text-sm font-semibold text-slate-dark">Filter:</span>
+
+        <button
+          class="filter-topic active px-3 py-1.5 text-sm rounded-full border transition-colors bg-green-primary text-white border-green-primary"
+          data-topic="all"
+        >
+          All Topics
+        </button>
+        {topics.map(topic => (
+          <button
+            class="filter-topic px-3 py-1.5 text-sm rounded-full border transition-colors bg-white text-slate border-cream-dark hover:border-green-primary hover:text-green-primary"
+            data-topic={topic}
+          >
+            {topic}
+          </button>
+        ))}
+
+        <div class="ml-auto">
+          <span class="text-sm text-slate-light" id="study-count">{studies.length} studies</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studies Grid -->
+  <section class="py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="studies-grid">
+        {studies.map(study => (
+          <article
+            class="study-card bg-white rounded-2xl p-6 border border-cream-dark hover:shadow-md transition-all group"
+            data-topic={study.topic}
+            data-year={study.year}
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <span class:list={['inline-flex px-2.5 py-0.5 text-xs font-semibold rounded-full border', topicColors[study.topic] || 'bg-gray-50 text-gray-700 border-gray-200']}>
+                {study.topic}
+              </span>
+              <span class="text-sm text-slate-light font-medium">{study.year}</span>
+            </div>
+
+            <h3 class="text-base font-heading font-bold text-slate-dark mb-2 group-hover:text-green-primary transition-colors leading-snug">
+              {study.title}
+            </h3>
+
+            <p class="text-xs text-slate-light italic mb-3">{study.journal}</p>
+
+            <p class="text-sm text-slate leading-relaxed">
+              {study.finding}
+            </p>
+          </article>
+        ))}
+      </div>
+
+      <div id="no-results" class="hidden text-center py-16">
+        <p class="text-slate text-lg">No studies found for this filter.</p>
+        <button class="mt-4 text-green-primary font-semibold hover:underline" id="reset-filter">
+          Show all studies
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Research Sections -->
+  <section class="py-12 lg:py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-heading font-bold text-green-primary mb-8">Review Articles</h2>
+      <div class="space-y-4">
+        {[
+          { title: 'Grounding – The Universal Anti-Inflammatory Remedy', year: 2023 },
+          { title: 'Could a Lack of Grounding (Connection to the Earth) Be an Underlying Factor for Illness?', year: 2022 },
+          { title: 'Integrative and Lifestyle Medicine Strategies to Address the Pandemic', year: 2020 },
+          { title: 'Electric Nutrition: The Surprising Health and Healing Benefits of Biological Grounding', year: 2017 },
+          { title: 'The Effects of Grounding on Inflammation, the Immune Response, Wound Healing, and Prevention of Chronic Diseases', year: 2015 },
+          { title: 'Earthing: Health Implications of Reconnecting the Human Body to the Earth\'s Surface Electrons', year: 2012 },
+        ].map(article => (
+          <div class="flex items-start gap-4 p-4 bg-cream rounded-xl border border-cream-dark">
+            <span class="text-sm font-medium text-slate-light shrink-0 mt-0.5">{article.year}</span>
+            <span class="text-sm text-slate-dark font-medium">{article.title}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-green-primary">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-4">
+        Help Fund the Next Breakthrough
+      </h2>
+      <p class="text-lg text-white/80 mb-8">
+        Every study listed above was made possible by the support of individuals like you.
+        Your tax-deductible donation advances the science of grounding and human health.
+      </p>
+      <a
+        href="/donate"
+        class="inline-flex items-center px-8 py-3.5 bg-white text-green-primary font-semibold rounded-full hover:bg-white/90 transition-colors shadow-lg"
+      >
+        Donate Today
+        <svg class="w-5 h-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const topicButtons = document.querySelectorAll('.filter-topic');
+  const cards = document.querySelectorAll('.study-card');
+  const countEl = document.getElementById('study-count');
+  const noResults = document.getElementById('no-results');
+  const resetBtn = document.getElementById('reset-filter');
+
+  function filterByTopic(topic: string) {
+    let visible = 0;
+    cards.forEach(card => {
+      const cardTopic = (card as HTMLElement).dataset.topic;
+      const show = topic === 'all' || cardTopic === topic;
+      (card as HTMLElement).style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    if (countEl) countEl.textContent = `${visible} ${visible === 1 ? 'study' : 'studies'}`;
+    noResults?.classList.toggle('hidden', visible > 0);
+
+    topicButtons.forEach(btn => {
+      const isActive = (btn as HTMLElement).dataset.topic === topic;
+      btn.classList.toggle('bg-green-primary', isActive);
+      btn.classList.toggle('text-white', isActive);
+      btn.classList.toggle('border-green-primary', isActive);
+      btn.classList.toggle('bg-white', !isActive);
+      btn.classList.toggle('text-slate', !isActive);
+      btn.classList.toggle('border-cream-dark', !isActive);
+    });
+  }
+
+  topicButtons.forEach(btn => {
+    btn.addEventListener('click', () => filterByTopic((btn as HTMLElement).dataset.topic || 'all'));
+  });
+
+  resetBtn?.addEventListener('click', () => filterByTopic('all'));
+</script>

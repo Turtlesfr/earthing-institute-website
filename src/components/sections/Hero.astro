@@ -1,0 +1,82 @@
+---
+---
+
+<section data-hero class="relative overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <pattern id="leaf-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+        <circle cx="10" cy="10" r="1" fill="currentColor" class="text-green-primary" />
+      </pattern>
+      <rect width="100" height="100" fill="url(#leaf-pattern)" />
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Content -->
+      <div class="max-w-xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-light rounded-full mb-6">
+          <span class="w-2 h-2 bg-green-primary rounded-full animate-pulse"></span>
+          <span class="text-sm font-medium text-green-dark">501(c)(3) Nonprofit Research Organization</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-green-primary mb-6 leading-[1.1]">
+          The Science of<br />
+          <span class="text-slate-dark">Healing Through</span><br />
+          Earth Connection
+        </h1>
+
+        <p class="text-lg text-slate leading-relaxed mb-8">
+          For over 20 years, the Earthing Institute has advanced peer-reviewed research
+          showing how direct physical contact with the Earth reduces inflammation,
+          improves sleep, and supports healing. We exist to bring this science to the world.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="/donate"
+            class="inline-flex items-center justify-center px-8 py-3.5 bg-green-primary text-white font-semibold rounded-full hover:bg-green-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+          >
+            Support Our Research
+            <svg class="w-5 h-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+            </svg>
+          </a>
+          <a
+            href="/research"
+            class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-green-primary font-semibold rounded-full border-2 border-green-primary/20 hover:border-green-primary/40 transition-all hover:-translate-y-0.5"
+          >
+            Explore the Research
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="relative">
+        <div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+          <!-- Placeholder gradient until real images are sourced -->
+          <div class="absolute inset-0 bg-gradient-to-br from-green-primary/20 via-green-light to-cream-dark">
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-center p-8">
+                <svg viewBox="0 0 120 120" class="w-32 h-32 mx-auto mb-4 text-green-primary/30">
+                  <circle cx="60" cy="60" r="55" fill="none" stroke="currentColor" stroke-width="2" />
+                  <path d="M60 15c-5 12-20 25-20 40a20 20 0 0 0 40 0c0-15-15-28-20-40z" fill="currentColor" opacity="0.2" />
+                  <path d="M60 55v20" stroke="currentColor" stroke-width="2" fill="none" />
+                  <path d="M52 65l8-8 8 8" stroke="currentColor" stroke-width="2" fill="none" />
+                </svg>
+                <p class="text-green-primary/50 text-sm font-medium">Hero image: barefoot on earth</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Decorative elements -->
+        <div class="absolute -bottom-4 -left-4 w-24 h-24 bg-green-primary/10 rounded-full blur-xl"></div>
+        <div class="absolute -top-4 -right-4 w-32 h-32 bg-green-light rounded-full blur-xl"></div>
+      </div>
+    </div>
+  </div>
+</section>

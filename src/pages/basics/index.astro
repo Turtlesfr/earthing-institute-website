@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Earthing Basics"
+  description="Learn what earthing (grounding) is, how it works, and how to get started. Understand the science behind connecting your body to the Earth's natural electric charge."
+>
+  <!-- Hero -->
+  <section class="bg-green-primary py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">
+        What is Earthing?
+      </h1>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto">
+        Everything you need to know about connecting with the Earth for better health.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- What is Earthing -->
+      <div class="prose-section mb-16">
+        <h2 class="text-3xl font-heading font-bold text-green-primary mb-6">Understanding Earthing</h2>
+        <p class="text-lg text-slate leading-relaxed mb-6">
+          Earthing, also known as grounding, refers to the practice of making direct physical contact
+          with the Earth's surface — walking barefoot on grass, soil, sand, or even swimming in natural
+          bodies of water.
+        </p>
+        <p class="text-lg text-slate leading-relaxed mb-6">
+          The Earth maintains a subtle negative electric charge on its surface. When you make direct
+          contact, free electrons transfer from the Earth into your body. These electrons act as
+          natural antioxidants, neutralizing positively charged free radicals that drive chronic
+          inflammation.
+        </p>
+        <p class="text-lg text-slate leading-relaxed">
+          We believe that earthing allows a transfer of electrons from the ground into the body.
+          We know that inflammation is caused by free radicals and that free radicals are neutralized
+          by electrons from any source. Electrons are the source of the neutralizing power of antioxidants.
+        </p>
+      </div>
+
+      <!-- How it Works -->
+      <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-cream-dark mb-16">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-8">How Does It Work?</h2>
+        <div class="grid sm:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-green-light flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-heading font-bold text-green-primary">1</span>
+            </div>
+            <h3 class="font-semibold text-slate-dark mb-2">Connect</h3>
+            <p class="text-sm text-slate">Make direct skin contact with the Earth's surface — barefoot on grass, soil, or sand.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-green-light flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-heading font-bold text-green-primary">2</span>
+            </div>
+            <h3 class="font-semibold text-slate-dark mb-2">Transfer</h3>
+            <p class="text-sm text-slate">Free electrons from the Earth enter your body, acting as natural antioxidants.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-2xl bg-green-light flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-heading font-bold text-green-primary">3</span>
+            </div>
+            <h3 class="font-semibold text-slate-dark mb-2">Heal</h3>
+            <p class="text-sm text-slate">These electrons neutralize free radicals, reducing inflammation and supporting recovery.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Benefits -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-8">Documented Benefits</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {[
+            { title: 'Reduced Inflammation', desc: 'Multiple studies show grounding reduces inflammatory markers in the body.' },
+            { title: 'Improved Sleep', desc: 'Grounding normalizes cortisol rhythms, leading to deeper, more restorative sleep.' },
+            { title: 'Pain Reduction', desc: 'Chronic pain conditions show improvement with regular earthing practice.' },
+            { title: 'Better Blood Flow', desc: 'Grounding reduces blood viscosity, improving cardiovascular health.' },
+            { title: 'Faster Recovery', desc: 'Athletes report reduced recovery time between training sessions.' },
+            { title: 'Stress Relief', desc: 'Grounding activates the parasympathetic nervous system, promoting calm.' },
+          ].map(benefit => (
+            <div class="flex items-start gap-3 p-4 bg-white rounded-xl border border-cream-dark">
+              <svg class="w-5 h-5 text-green-primary shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              <div>
+                <h3 class="font-semibold text-slate-dark text-sm">{benefit.title}</h3>
+                <p class="text-sm text-slate mt-1">{benefit.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Getting Started -->
+      <div class="bg-green-light/50 rounded-3xl p-8 lg:p-12 border border-green-primary/10 mb-16">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-6">Getting Started</h2>
+        <p class="text-lg text-slate leading-relaxed mb-6">
+          The simplest way to begin earthing is to step outside barefoot. Walk on grass, soil, sand,
+          or even concrete (which is conductive). Aim for at least 20-30 minutes per day.
+        </p>
+        <h3 class="font-semibold text-slate-dark mb-3">Simple ways to ground yourself:</h3>
+        <ul class="space-y-2 text-slate">
+          <li class="flex items-start gap-2">
+            <span class="text-green-primary font-bold">-</span>
+            <span>Walk barefoot on grass, soil, or sand</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-primary font-bold">-</span>
+            <span>Swim in natural bodies of water (ocean, lake, river)</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-primary font-bold">-</span>
+            <span>Sit or lie on the ground in a park or garden</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-primary font-bold">-</span>
+            <span>Use grounding products indoors (mats, sheets, bands) for extended contact</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-green-primary font-bold">-</span>
+            <span>Garden with bare hands in soil</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Medical Considerations -->
+      <div class="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-cream-dark">
+        <h2 class="text-2xl font-heading font-bold text-green-primary mb-6">Medical Considerations</h2>
+        <p class="text-slate leading-relaxed mb-4">
+          Earthing is generally safe for most people. However, if you take blood-thinning medications
+          (such as Coumadin/warfarin), please consult your doctor before beginning an earthing practice,
+          as grounding has been shown to affect blood viscosity.
+        </p>
+        <p class="text-slate leading-relaxed">
+          People on thyroid medication should also consult their healthcare provider, as earthing may
+          affect thyroid function and medication needs may change. Always work with your healthcare
+          provider when making changes to your wellness routine.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-green-primary">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-4">
+        Ready to Learn More?
+      </h2>
+      <p class="text-lg text-white/80 mb-8">
+        Explore the research behind earthing or get certified as an earthing practitioner.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/research" class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-green-primary font-semibold rounded-full hover:bg-white/90 transition-colors">
+          View the Research
+        </a>
+        <a href="/courses" class="inline-flex items-center justify-center px-8 py-3.5 bg-white/10 text-white font-semibold rounded-full border border-white/30 hover:bg-white/20 transition-colors">
+          Explore Courses
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

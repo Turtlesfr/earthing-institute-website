@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/config';
+
+const courses = [
+  { level: 1, lessons: 9, duration: '1 hour', desc: 'Foundation course covering the basics of earthing science and practice.' },
+  { level: 2, lessons: 12, duration: '1 hour', desc: 'Intermediate course diving deeper into research and clinical applications.' },
+  { level: 3, lessons: 6, duration: '1 hour', desc: 'Advanced certification for health professionals and practitioners.' },
+];
+
+const languages = [
+  { name: 'English', flag: 'EN' },
+  { name: 'Espanol', flag: 'ES' },
+  { name: 'Francais', flag: 'FR' },
+];
+---
+
+<BaseLayout
+  title="Certification Courses"
+  description="Become a certified earthing practitioner. Three levels of certification available in English, Spanish, and French."
+>
+  <!-- Hero -->
+  <section class="bg-green-primary py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">
+        Become Earthing Certified
+      </h1>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto">
+        Our certification program teaches the science, practice, and communication of earthing.
+        Available in three languages with three levels of expertise.
+      </p>
+    </div>
+  </section>
+
+  <!-- Course Levels -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        {courses.map((course) => (
+          <div class:list={[
+            'bg-white rounded-2xl p-8 border shadow-sm hover:shadow-md transition-shadow',
+            course.level === 2 ? 'border-green-primary ring-2 ring-green-primary/20' : 'border-cream-dark',
+          ]}>
+            {course.level === 2 && (
+              <div class="inline-flex items-center px-3 py-1 bg-green-light text-green-primary text-xs font-bold rounded-full mb-4">
+                Most Popular
+              </div>
+            )}
+            <div class="text-sm font-semibold text-slate-light uppercase tracking-wide mb-2">
+              Level {course.level}
+            </div>
+            <h2 class="text-2xl font-heading font-bold text-green-primary mb-4">
+              Earthing Certification
+            </h2>
+            <div class="flex items-center gap-4 mb-6 text-sm text-slate">
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+                </svg>
+                {course.duration}
+              </span>
+              <span class="flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                {course.lessons} lessons
+              </span>
+            </div>
+            <p class="text-slate text-sm leading-relaxed mb-6">{course.desc}</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              {languages.map(lang => (
+                <span class="inline-flex items-center px-2.5 py-1 bg-cream rounded-full text-xs font-medium text-slate">
+                  {lang.flag} {lang.name}
+                </span>
+              ))}
+            </div>
+            <a
+              href={site.coursesUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class:list={[
+                'block w-full text-center px-6 py-3 font-semibold rounded-full transition-colors',
+                course.level === 2
+                  ? 'bg-green-primary text-white hover:bg-green-dark'
+                  : 'bg-green-primary/10 text-green-primary hover:bg-green-primary hover:text-white',
+              ]}
+            >
+              Enroll Now
+              <svg class="inline w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-sm text-slate-light mt-8">
+        Courses are hosted on our learning management system. You'll be redirected to the course platform to enroll.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-green-primary">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-heading font-bold text-white mb-4">
+        Not Ready for a Course Yet?
+      </h2>
+      <p class="text-lg text-white/80 mb-8">
+        Start with the basics and explore the research behind earthing.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/basics" class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-green-primary font-semibold rounded-full hover:bg-white/90 transition-colors">
+          Learn the Basics
+        </a>
+        <a href="/research" class="inline-flex items-center justify-center px-8 py-3.5 bg-white/10 text-white font-semibold rounded-full border border-white/30 hover:bg-white/20 transition-colors">
+          Read the Research
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

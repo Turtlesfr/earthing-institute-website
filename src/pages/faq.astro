@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqCategories = [
+  {
+    title: 'Earthing Basics',
+    questions: [
+      { q: 'What is earthing (grounding)?', a: 'Earthing, or grounding, refers to direct physical contact with the Earth\'s surface — walking barefoot on grass, soil, or sand, or using grounding products indoors. The Earth maintains a subtle negative electric charge, and direct contact transfers free electrons into your body.' },
+      { q: 'How does earthing work?', a: 'The Earth\'s surface has a virtually unlimited supply of free electrons. When you make direct contact, these electrons transfer into your body and act as natural antioxidants, neutralizing positively charged free radicals that drive chronic inflammation.' },
+      { q: 'Can I ground through shoes?', a: 'Most shoes have rubber or synthetic soles that insulate you from the Earth. Leather-soled shoes can be conductive, especially when moist. For full grounding benefits, bare skin contact is best.' },
+      { q: 'Does grounding work on concrete?', a: 'Yes, concrete is conductive (it contains moisture and minerals). You can ground by standing barefoot on concrete, though natural surfaces like grass, soil, and sand are most effective.' },
+      { q: 'Can I ground in water?', a: 'Yes. Water, especially mineral-rich water like the ocean, is an excellent conductor. Swimming, wading, or simply standing in natural bodies of water provides grounding.' },
+    ]
+  },
+  {
+    title: 'Getting Started',
+    questions: [
+      { q: 'How long should I ground each day?', a: 'Research studies typically use 20-40 minutes of grounding. Many people report noticeable benefits from as little as 20 minutes per day. More is generally better — our ancestors were grounded 24/7.' },
+      { q: 'What will I feel when I start grounding?', a: 'Experiences vary. Many people report feeling a gentle tingling sensation, warmth in the feet, or a sense of calm. Some people feel nothing initially but notice improved sleep or reduced pain over days or weeks.' },
+      { q: 'Can I ground indoors?', a: 'Yes, using grounding products that connect to the Earth through your home\'s grounding system — mats, sheets, bands, or patches that plug into the ground port of a standard electrical outlet.' },
+      { q: 'Is grounding safe?', a: 'Grounding is generally very safe. However, if you take blood-thinning medications, consult your doctor first, as grounding has been shown to affect blood viscosity. The same applies to thyroid medication.' },
+    ]
+  },
+  {
+    title: 'Health & Science',
+    questions: [
+      { q: 'Is there scientific evidence for earthing?', a: 'Yes. Over 35 peer-reviewed studies have been published in scientific journals documenting measurable physiological effects of grounding, including reduced inflammation, improved sleep, decreased pain, and changes in blood viscosity.' },
+      { q: 'Can earthing replace medical treatment?', a: 'No. Earthing is not a substitute for medical treatment. It is a complementary practice that may support overall health. Always consult your healthcare provider for medical conditions.' },
+      { q: 'How does earthing reduce inflammation?', a: 'Free electrons from the Earth neutralize positively charged free radicals — the molecules responsible for the inflammatory response. This is the same mechanism by which dietary antioxidants work, but through direct electron transfer.' },
+      { q: 'Does earthing affect blood pressure?', a: 'Research suggests grounding may have positive effects on blood pressure and blood viscosity. If you take blood pressure or blood-thinning medication, consult your doctor, as your dosage may need adjustment.' },
+    ]
+  },
+  {
+    title: 'EMF & Safety',
+    questions: [
+      { q: 'Does grounding turn me into an antenna for EMFs?', a: 'No. This is a common misconception. Research has shown that grounding actually reduces the body voltage induced by ambient electromagnetic fields. Grounding helps, not hinders, your body\'s electromagnetic environment.' },
+      { q: 'What about "dirty electricity" concerns?', a: 'Indoor grounding products connect only to the Earth ground, not to the electrical circuit. Properly designed grounding products have built-in resistors to ensure safety. The Earthing Institute has published papers addressing these concerns.' },
+      { q: 'Is it safe to ground during a thunderstorm?', a: 'Do not ground outdoors during a thunderstorm. If you are using an indoor grounding product, disconnect it during electrical storms as a precaution, just as you would unplug sensitive electronics.' },
+    ]
+  },
+];
+---
+
+<BaseLayout
+  title="Frequently Asked Questions"
+  description="Common questions about earthing (grounding), how it works, getting started, health effects, and safety considerations."
+>
+  <section class="bg-green-primary py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-heading font-bold text-white mb-6">
+        Frequently Asked Questions
+      </h1>
+      <p class="text-lg text-white/80">Everything you want to know about earthing, answered.</p>
+    </div>
+  </section>
+
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {faqCategories.map(category => (
+        <div class="mb-12">
+          <h2 class="text-2xl font-heading font-bold text-green-primary mb-6">{category.title}</h2>
+          <div class="space-y-3">
+            {category.questions.map(faq => (
+              <details class="group bg-white rounded-xl border border-cream-dark overflow-hidden">
+                <summary class="flex items-center justify-between p-5 cursor-pointer select-none hover:bg-green-light/30 transition-colors">
+                  <span class="font-medium text-slate-dark pr-4">{faq.q}</span>
+                  <svg class="w-5 h-5 text-slate-light shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <div class="px-5 pb-5 text-slate leading-relaxed">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-16 bg-cream-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-heading font-bold text-green-primary mb-4">Still Have Questions?</h2>
+      <p class="text-slate mb-6">We're happy to help. Reach out to our team.</p>
+      <a href="/contact" class="inline-flex items-center px-6 py-3 bg-green-primary text-white font-semibold rounded-full hover:bg-green-dark transition-colors">
+        Contact Us
+      </a>
+    </div>
+  </section>
+</BaseLayout>
