@@ -8,7 +8,7 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 shrink-0">
+      <a href={import.meta.env.BASE_URL} class="flex items-center gap-3 shrink-0">
         <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-green-primary flex items-center justify-center">
           <svg viewBox="0 0 24 24" class="w-6 h-6 lg:w-7 lg:h-7 text-white" fill="none" stroke="currentColor" stroke-width="1.5">
             <path d="M12 3c-1.5 3-5 6-5 10a5 5 0 0 0 10 0c0-4-3.5-7-5-10z" />
@@ -63,7 +63,7 @@ const currentPath = Astro.url.pathname;
       <!-- Donate Button + Mobile Menu -->
       <div class="flex items-center gap-3">
         <a
-          href="/donate"
+          href={`${import.meta.env.BASE_URL}donate`}
           class="inline-flex items-center px-5 py-2.5 bg-green-primary text-white text-sm font-semibold rounded-full hover:bg-green-dark transition-colors shadow-md hover:shadow-lg"
         >
           Donate

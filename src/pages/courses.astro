@@ -110,10 +110,10 @@ const languages = [
         Start with the basics and explore the research behind earthing.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/basics" class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-green-primary font-semibold rounded-full hover:bg-white/90 transition-colors">
+        <a href={`${import.meta.env.BASE_URL}basics`} class="inline-flex items-center justify-center px-8 py-3.5 bg-white text-green-primary font-semibold rounded-full hover:bg-white/90 transition-colors">
           Learn the Basics
         </a>
-        <a href="/research" class="inline-flex items-center justify-center px-8 py-3.5 bg-white/10 text-white font-semibold rounded-full border border-white/30 hover:bg-white/20 transition-colors">
+        <a href={`${import.meta.env.BASE_URL}research`} class="inline-flex items-center justify-center px-8 py-3.5 bg-white/10 text-white font-semibold rounded-full border border-white/30 hover:bg-white/20 transition-colors">
           Read the Research
         </a>
       </div>
