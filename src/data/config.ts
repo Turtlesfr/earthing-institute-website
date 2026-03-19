@@ -41,14 +41,70 @@ export const impactStats = [
   { value: '17', label: 'Languages', icon: 'globe' },
 ] as const;
 
-export const donationTiers = [
+export const monthlyTiers = [
+  {
+    name: 'Friend',
+    amount: 5,
+    stripeLink: '#', // Replace with actual Stripe Payment Link (recurring)
+    tagline: 'The cost of a coffee each month',
+    benefits: [
+      'Newsletter subscription',
+      'Thank you letter from the Institute',
+      'Know you are funding real science every month',
+    ],
+  },
   {
     name: 'Supporter',
-    amount: 55,
-    stripeLink: '#', // Replace with actual Stripe Payment Link
+    amount: 10,
+    stripeLink: '#',
+    tagline: 'Keep the science going',
+    benefits: [
+      'Digital Brief Guide to Earthing',
+      'Monthly research digest email',
+      'All Friend benefits',
+    ],
+  },
+  {
+    name: 'Advocate',
+    amount: 20,
+    stripeLink: '#',
+    featured: true,
+    tagline: 'Our most impactful tier',
+    benefits: [
+      'Directly sustains ongoing research operations',
+      'Name on our supporters page',
+      'All Supporter benefits',
+    ],
+  },
+  {
+    name: 'Champion',
+    amount: 50,
+    stripeLink: '#',
+    tagline: 'Help fund a new study every year',
+    benefits: [
+      'Virtual Meet & Greet with Dr. Chevalier',
+      'Early access to new research findings',
+      'All Advocate benefits',
+    ],
+  },
+] as const;
+
+export const oneTimeTiers = [
+  {
+    name: 'Starter',
+    amount: 25,
+    stripeLink: '#',
     benefits: [
       'Digital Brief Guide to Earthing',
       'Newsletter subscription',
+    ],
+  },
+  {
+    name: 'Supporter',
+    amount: 55,
+    stripeLink: '#',
+    benefits: [
+      'Digital Brief Guide to Earthing',
       'Thank you letter from the Institute',
     ],
   },
@@ -56,6 +112,7 @@ export const donationTiers = [
     name: 'Advocate',
     amount: 99,
     stripeLink: '#',
+    featured: true,
     benefits: [
       'Signed copy of the Earthing book',
       'All Supporter benefits',
@@ -65,54 +122,21 @@ export const donationTiers = [
     name: 'Bronze',
     amount: 250,
     stripeLink: '#',
-    featured: false,
     benefits: [
       'Website recognition',
-      'Virtual Meet & Greet with Dr. Chevalier & Clint Ober',
       'Universal Mat Kit',
       'All Advocate benefits',
-    ],
-  },
-  {
-    name: 'Silver',
-    amount: 1_000,
-    stripeLink: '#',
-    featured: true,
-    benefits: [
-      'Website recognition',
-      'Earthing Essentials Kit',
-      'All Bronze benefits',
-    ],
-  },
-  {
-    name: 'Gold',
-    amount: 5_000,
-    stripeLink: '#',
-    benefits: [
-      'Whitepaper sponsorship',
-      '2x Earthing Essentials Kits',
-      'All Silver benefits',
-    ],
-  },
-  {
-    name: 'Platinum',
-    amount: 20_000,
-    stripeLink: '#',
-    benefits: [
-      'Pilot or full study sponsorship',
-      'Recognition in publication',
-      'All Gold benefits',
     ],
   },
 ] as const;
 
 export const impactExamples = [
-  { amount: 55, impact: 'Distributes research summaries to 100 health professionals' },
+  { amount: 5, impact: 'Sends a research summary to 10 health professionals' },
+  { amount: 10, impact: 'Funds newsletter distribution to 200+ subscribers worldwide' },
+  { amount: 20, impact: 'Covers the cost of one peer-review submission fee' },
+  { amount: 50, impact: 'Supplies lab materials for a grounding measurement session' },
   { amount: 99, impact: 'Funds translation of one research paper for international reach' },
   { amount: 250, impact: 'Supplies lab materials for a pilot grounding study' },
-  { amount: 1_000, impact: 'Sponsors a peer-reviewed research publication' },
-  { amount: 5_000, impact: 'Funds a complete pilot study on grounding and health' },
-  { amount: 20_000, impact: 'Sponsors a full randomized controlled trial' },
 ] as const;
 
 export const featuredTestimonials = [

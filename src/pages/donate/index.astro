@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { donationTiers, impactExamples, site } from '../../data/config';
+import { monthlyTiers, oneTimeTiers, impactExamples, site } from '../../data/config';
 ---
 
 <BaseLayout
@@ -28,8 +28,8 @@ import { donationTiers, impactExamples, site } from '../../data/config';
         Fund the Science<br />That Changes Lives
       </h1>
       <p class="text-lg lg:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-        Every peer-reviewed study, every breakthrough finding, every life changed
-        through earthing research — it starts with your generosity.
+        For less than the cost of a coffee each month, you can help fund
+        peer-reviewed research that is changing how the world understands health.
       </p>
 
       <!-- Progress bar -->
@@ -63,27 +63,28 @@ import { donationTiers, impactExamples, site } from '../../data/config';
           <button
             class:list={[
               'impact-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all border-2',
-              i === 1
+              i === 2
                 ? 'bg-green-primary text-white border-green-primary'
                 : 'bg-white text-slate-dark border-cream-dark hover:border-green-primary hover:text-green-primary',
             ]}
             data-amount={item.amount}
             data-impact={item.impact}
           >
-            ${item.amount.toLocaleString()}
+            ${item.amount}
           </button>
         ))}
       </div>
 
       <div class="bg-green-light/50 rounded-2xl p-8 text-center border border-green-primary/10">
         <p class="text-green-dark text-lg font-medium" id="impact-text">
-          {impactExamples[1].impact}
+          {impactExamples[2].impact}
         </p>
         <a
-          href="#tiers"
+          href="#monthly"
+          id="impact-donate-btn"
           class="inline-flex items-center mt-4 px-6 py-3 bg-green-primary text-white font-semibold rounded-full hover:bg-green-dark transition-colors"
         >
-          Donate ${impactExamples[1].amount}
+          Donate $<span id="impact-btn-amount">{impactExamples[2].amount}</span>
           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
@@ -92,38 +93,30 @@ import { donationTiers, impactExamples, site } from '../../data/config';
     </div>
   </section>
 
-  <!-- Donation Tiers -->
-  <section id="tiers" class="py-16 lg:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Monthly Giving — PRIMARY -->
+  <section id="monthly" class="py-16 lg:py-24 bg-gradient-to-b from-cream to-green-light/20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-green-primary/10 rounded-full mb-4">
+          <svg class="w-4 h-4 text-green-primary" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+          </svg>
+          <span class="text-sm font-bold text-green-primary">Recommended</span>
+        </div>
         <h2 class="text-3xl lg:text-4xl font-heading font-bold text-green-primary mb-4">
-          Choose Your Level of Support
+          Give Monthly, Change Everything
         </h2>
         <p class="text-lg text-slate max-w-2xl mx-auto">
-          Every tier includes exclusive benefits as a thank-you for your generosity.
-          All donations are tax-deductible under our 501(c)(3) status.
+          Monthly donors are the backbone of our research. A small recurring gift provides the
+          <strong>stable funding</strong> we need to plan and execute long-term studies.
         </p>
-
-        <!-- Recurring toggle -->
-        <div class="flex items-center justify-center gap-3 mt-8">
-          <span class="text-sm text-slate" id="one-time-label">One-time</span>
-          <button
-            id="recurring-toggle"
-            class="relative w-12 h-6 bg-cream-dark rounded-full transition-colors"
-            role="switch"
-            aria-checked="false"
-          >
-            <span class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transition-transform" id="toggle-dot"></span>
-          </button>
-          <span class="text-sm text-slate" id="recurring-label">Monthly</span>
-        </div>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {donationTiers.map((tier) => (
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {monthlyTiers.map((tier) => (
           <div
             class:list={[
-              'relative rounded-2xl p-6 lg:p-8 transition-all hover:-translate-y-1 hover:shadow-lg border',
+              'relative rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-lg border',
               'featured' in tier && tier.featured
                 ? 'bg-white ring-2 ring-green-primary shadow-md border-green-primary'
                 : 'bg-white border-cream-dark shadow-sm',
@@ -137,23 +130,22 @@ import { donationTiers, impactExamples, site } from '../../data/config';
               </div>
             )}
 
-            <div class="text-sm font-semibold text-slate-light uppercase tracking-wide mb-2">
+            <div class="text-sm font-semibold text-slate-light uppercase tracking-wide mb-1">
               {tier.name}
             </div>
-            <div class="text-4xl font-heading font-bold text-green-primary mb-1">
-              ${tier.amount.toLocaleString()}
+            <div class="flex items-baseline gap-1 mb-1">
+              <span class="text-3xl font-heading font-bold text-green-primary">${tier.amount}</span>
+              <span class="text-sm text-slate-light">/month</span>
             </div>
-            <div class="text-sm text-slate-light mb-6" id={`tier-freq-${tier.amount}`}>
-              One-time donation
-            </div>
+            <p class="text-xs text-green-dark font-medium mb-4 italic">{tier.tagline}</p>
 
-            <ul class="space-y-3 mb-8">
+            <ul class="space-y-2 mb-6">
               {tier.benefits.map((benefit) => (
-                <li class="flex items-start gap-2.5">
-                  <svg class="w-5 h-5 text-green-primary shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-green-primary shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                   </svg>
-                  <span class="text-sm text-slate">{benefit}</span>
+                  <span class="text-xs text-slate">{benefit}</span>
                 </li>
               ))}
             </ul>
@@ -161,17 +153,103 @@ import { donationTiers, impactExamples, site } from '../../data/config';
             <a
               href={tier.stripeLink === '#' ? '#' : tier.stripeLink}
               class:list={[
-                'block w-full text-center px-6 py-3 font-semibold rounded-full transition-colors',
+                'block w-full text-center px-4 py-2.5 text-sm font-semibold rounded-full transition-colors',
                 'featured' in tier && tier.featured
                   ? 'bg-green-primary text-white hover:bg-green-dark shadow-md'
                   : 'bg-green-primary/10 text-green-primary hover:bg-green-primary hover:text-white',
               ]}
             >
-              Donate ${tier.amount.toLocaleString()}
+              Give ${tier.amount}/mo
             </a>
           </div>
         ))}
       </div>
+
+      <p class="text-center text-sm text-slate-light mt-6">
+        Cancel or change your monthly gift anytime. No commitment required.
+      </p>
+    </div>
+  </section>
+
+  <!-- One-Time Giving — SECONDARY -->
+  <section id="one-time" class="py-16 lg:py-20 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl lg:text-3xl font-heading font-bold text-green-primary mb-3">
+          Prefer a One-Time Gift?
+        </h2>
+        <p class="text-slate max-w-xl mx-auto">
+          Every amount helps. Choose a one-time donation below.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {oneTimeTiers.map((tier) => (
+          <div
+            class:list={[
+              'relative rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-lg border',
+              'featured' in tier && tier.featured
+                ? 'bg-cream ring-2 ring-green-primary shadow-md border-green-primary'
+                : 'bg-cream border-cream-dark shadow-sm',
+            ]}
+          >
+            {'featured' in tier && tier.featured && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span class="inline-flex items-center px-3 py-1 bg-green-primary text-white text-xs font-bold rounded-full">
+                  Best Value
+                </span>
+              </div>
+            )}
+
+            <div class="text-sm font-semibold text-slate-light uppercase tracking-wide mb-1">
+              {tier.name}
+            </div>
+            <div class="text-3xl font-heading font-bold text-green-primary mb-4">
+              ${tier.amount}
+            </div>
+
+            <ul class="space-y-2 mb-6">
+              {tier.benefits.map((benefit) => (
+                <li class="flex items-start gap-2">
+                  <svg class="w-4 h-4 text-green-primary shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-xs text-slate">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={tier.stripeLink === '#' ? '#' : tier.stripeLink}
+              class:list={[
+                'block w-full text-center px-4 py-2.5 text-sm font-semibold rounded-full transition-colors',
+                'featured' in tier && tier.featured
+                  ? 'bg-green-primary text-white hover:bg-green-dark shadow-md'
+                  : 'bg-green-primary/10 text-green-primary hover:bg-green-primary hover:text-white',
+              ]}
+            >
+              Donate ${tier.amount}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Major Giving -->
+  <section class="py-12 bg-cream border-y border-cream-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h3 class="text-xl font-heading font-bold text-green-primary mb-3">Major Gifts & Study Sponsorship</h3>
+      <p class="text-slate mb-4">
+        Interested in sponsoring a study ($1,000+), funding a pilot trial ($5,000+),
+        or sponsoring a full randomized controlled trial ($20,000+)?
+      </p>
+      <a href={`mailto:${site.email}`} class="inline-flex items-center text-green-primary font-semibold hover:underline">
+        Contact us at {site.email}
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </a>
     </div>
   </section>
 
@@ -217,7 +295,7 @@ import { donationTiers, impactExamples, site } from '../../data/config';
 
       <div class="text-center mt-10">
         <p class="text-slate text-sm mb-2">Want to see your name here?</p>
-        <a href="#tiers" class="inline-flex items-center text-green-primary font-semibold hover:underline">
+        <a href="#monthly" class="inline-flex items-center text-green-primary font-semibold hover:underline">
           Join our supporters
           <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -244,6 +322,7 @@ import { donationTiers, impactExamples, site } from '../../data/config';
   // Impact calculator
   const buttons = document.querySelectorAll('.impact-btn');
   const impactText = document.getElementById('impact-text');
+  const impactBtnAmount = document.getElementById('impact-btn-amount');
 
   buttons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -253,31 +332,9 @@ import { donationTiers, impactExamples, site } from '../../data/config';
       });
       btn.classList.add('bg-green-primary', 'text-white', 'border-green-primary');
       btn.classList.remove('bg-white', 'text-slate-dark', 'border-cream-dark');
-      if (impactText) impactText.textContent = (btn as HTMLElement).dataset.impact || '';
-    });
-  });
-
-  // Recurring toggle
-  const toggle = document.getElementById('recurring-toggle');
-  const dot = document.getElementById('toggle-dot');
-  let isRecurring = false;
-
-  toggle?.addEventListener('click', () => {
-    isRecurring = !isRecurring;
-    toggle.setAttribute('aria-checked', String(isRecurring));
-    if (isRecurring) {
-      toggle.classList.add('bg-green-primary');
-      toggle.classList.remove('bg-cream-dark');
-      dot?.classList.add('translate-x-6');
-    } else {
-      toggle.classList.remove('bg-green-primary');
-      toggle.classList.add('bg-cream-dark');
-      dot?.classList.remove('translate-x-6');
-    }
-
-    // Update tier frequency text
-    document.querySelectorAll('[id^="tier-freq-"]').forEach(el => {
-      el.textContent = isRecurring ? 'Monthly donation' : 'One-time donation';
+      const el = btn as HTMLElement;
+      if (impactText) impactText.textContent = el.dataset.impact || '';
+      if (impactBtnAmount) impactBtnAmount.textContent = el.dataset.amount || '';
     });
   });
 </script>

@@ -1,7 +1,5 @@
 ---
-import { donationTiers } from '../../data/config';
-
-const highlightedTiers = donationTiers.slice(0, 4);
+import { monthlyTiers } from '../../data/config';
 ---
 
 <section class="py-20 lg:py-28 bg-green-primary relative overflow-hidden">
@@ -22,8 +20,8 @@ const highlightedTiers = donationTiers.slice(0, 4);
       </h2>
       <p class="text-lg text-white/80 leading-relaxed">
         As a 501(c)(3) nonprofit, every breakthrough depends on the generosity of people
-        who believe in the science. Your tax-deductible donation directly funds the next
-        peer-reviewed study.
+        who believe in the science. A small monthly gift provides the stable funding
+        we need to plan and execute long-term studies.
       </p>
 
       <!-- Progress bar -->
@@ -40,9 +38,9 @@ const highlightedTiers = donationTiers.slice(0, 4);
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-      {highlightedTiers.map((tier) => (
+      {monthlyTiers.map((tier) => (
         <a
-          href={tier.stripeLink === '#' ? '/donate' : tier.stripeLink}
+          href="/donate"
           class:list={[
             'block rounded-2xl p-6 transition-all hover:-translate-y-1 hover:shadow-xl group',
             'featured' in tier && tier.featured
@@ -56,14 +54,24 @@ const highlightedTiers = donationTiers.slice(0, 4);
             </div>
           )}
           <div class="text-sm font-medium opacity-70 mb-1">{tier.name}</div>
-          <div class:list={[
-            'text-3xl font-heading font-bold mb-4',
-            'featured' in tier && tier.featured ? 'text-green-primary' : '',
-          ]}>
-            ${tier.amount.toLocaleString()}
+          <div class="flex items-baseline gap-1 mb-1">
+            <span class:list={[
+              'text-3xl font-heading font-bold',
+              'featured' in tier && tier.featured ? 'text-green-primary' : '',
+            ]}>
+              ${tier.amount}
+            </span>
+            <span class:list={[
+              'text-sm',
+              'featured' in tier && tier.featured ? 'text-slate-light' : 'opacity-60',
+            ]}>/mo</span>
           </div>
+          <p class:list={[
+            'text-xs italic mb-4',
+            'featured' in tier && tier.featured ? 'text-green-dark' : 'opacity-60',
+          ]}>{tier.tagline}</p>
           <ul class="space-y-2">
-            {tier.benefits.slice(0, 3).map((benefit) => (
+            {tier.benefits.slice(0, 2).map((benefit) => (
               <li class="flex items-start gap-2 text-sm">
                 <svg class:list={['w-4 h-4 mt-0.5 shrink-0', 'featured' in tier && tier.featured ? 'text-green-primary' : 'text-white/60']} viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
