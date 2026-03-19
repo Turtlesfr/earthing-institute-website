@@ -5,8 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://turtlesfr.github.io',
-  base: '/earthing-institute-website',
+  site: 'https://earthing-institute.pages.dev',
   vite: {
     plugins: [tailwindcss()]
   }
